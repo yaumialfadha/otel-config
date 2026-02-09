@@ -51,7 +51,7 @@ processors:
   resource/override-hostname:
     attributes:
       - key: host.name
-        value: PLACEHOLDER_SERVICE_NAME
+        value: PLACEHOLDER_HOSTNAME
         action: upsert
   batch:
     send_batch_size: 1000
@@ -63,14 +63,11 @@ extensions:
 
 exporters:
   otlp:
-    endpoint: "PLACEHOLDER_IP:4317"
+    endpoint: "PLACEHOLDER_ENDPOINT"
     tls:
       insecure: true
 
 service:
-  telemetry:
-    metrics:
-      address: 0.0.0.0:8888
   extensions: [health_check, zpages]
   pipelines:
     metrics:
